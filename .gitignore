@@ -1,0 +1,26 @@
+### public ###
+.idea
+.vscode
+.vs
+
+### python ###
+__pycache__
+.venv
+log
+logs
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.whl
+*.manifest
+*.spec
+*.db
+*.sqlite3
+
+
+### build ###
+build
+dist
+*.egg
+*.egg-info
