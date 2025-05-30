@@ -11,7 +11,7 @@ import logging
 
 from fairylandfuture.toolkit.journal import Journal
 
-journal: Journal = Journal(debug=True, console=False, clear_existing=False)
+journal: Journal = Journal(debug=True, console=True)
 
 
 class JournalHandler(logging.Handler):

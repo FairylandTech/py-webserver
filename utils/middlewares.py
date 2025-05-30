@@ -12,7 +12,7 @@ from django.http.request import HttpRequest
 from utils.journal import journal
 
 
-class SplitRequestMiddleware:
+class RequestMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response

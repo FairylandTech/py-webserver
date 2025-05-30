@@ -12,7 +12,6 @@ from typing import Optional, Dict, Any
 import requests
 import urllib3
 
-from fairylandfuture import journal
 from fairylandfuture.exceptions.generic import BaseProgramException
 from fairylandfuture.structures.http.request import HTTPSimpleRequestResultStructure
 
@@ -45,21 +44,16 @@ class HTTPSimpleRequest:
                 result = response.json()
 
                 return HTTPSimpleRequestResultStructure(True, result, "json", response)
-            except requests.exceptions.JSONDecodeError as err:
-                journal.warning("JSON decode error: {}", err)
-
+            except requests.exceptions.JSONDecodeError:
                 result = response.text
 
                 return HTTPSimpleRequestResultStructure(True, result, "text", response)
 
         except requests.exceptions.HTTPError as err:
-            journal.error("HTTP error occurred: {}", err)
             raise BaseProgramException from err
 
         except Exception as err:
-            journal.error("Error in GET request: {}", err)
-
-            return HTTPSimpleRequestResultStructure(False, None, None, None)
+            raise RuntimeError from err
 
     def post(self, url: str, data: Optional[Dict[str, Any]] = None) -> HTTPSimpleRequestResultStructure:
         try:
@@ -70,19 +64,14 @@ class HTTPSimpleRequest:
                 result = response.json()
 
                 return HTTPSimpleRequestResultStructure(True, result, "json", response)
-            except requests.exceptions.JSONDecodeError as err:
-                journal.warning("JSON decode error: {}", err)
-
+            except requests.exceptions.JSONDecodeError:
                 result = response.text
 
                 return HTTPSimpleRequestResultStructure(True, result, "text", response)
 
         except requests.exceptions.HTTPError as err:
-            journal.error("HTTP error occurred: {}", err)
             raise BaseProgramException from err
 
         except Exception as err:
-            journal.error("Error in POST request: {}", err)
-
-            return HTTPSimpleRequestResultStructure(False, None, None, None)
+            raise RuntimeError from err
 

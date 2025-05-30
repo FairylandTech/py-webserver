@@ -4,21 +4,16 @@
 @author: Lionel Johnson
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
-@datetime: 2025-05-27 15:27:51 UTC+08:00
+@datetime: 2025-05-28 15:56:05 UTC+08:00
 """
 
 from pathlib import Path
-
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
-
-from apps.example.views import ExampleViewSet
 
 app_name = Path(__file__).resolve().parent.name
 
 router = SimpleRouter(trailing_slash=False, use_regex_path=False)
-
-router.register(r"/example", ExampleViewSet, basename="示例视图集")
 
 urlpatterns = [
     path("/v1", include(router.urls)),

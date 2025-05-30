@@ -19,9 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from apps import example
+from apps import rbac
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
 
-    path("api/example", include("apps.example.urls", namespace=example.namespace))
+    path("api/example", include("apps.example.urls", namespace=example.namespace)),
+    path("api/rbac", include("apps.rbac.urls", namespace=rbac.namespace)),
 ]

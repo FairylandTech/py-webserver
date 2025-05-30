@@ -4,8 +4,5 @@
 @author: Lionel Johnson
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
-@datetime: 2025-05-27 15:23:02 UTC+08:00
+@datetime: 2025-05-28 17:17:01 UTC+08:00
 """
-import pymysql
-
-pymysql.install_as_MySQLdb()

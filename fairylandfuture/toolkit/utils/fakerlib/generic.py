@@ -19,3 +19,9 @@ class FakeGeneralToolkit:
 
         segments = [secrets.token_hex(round(number / 2)).upper() for _ in range(group)]
         return f"{sep}".join(segments)
+
+    @classmethod
+    def generate_random_string(cls, length=16, charset="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
+        if length <= 0:
+            raise ValueError("Length must be a positive integer.")
+        return "".join(secrets.choice(charset) for _ in range(length))

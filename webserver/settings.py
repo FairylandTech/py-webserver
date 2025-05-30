@@ -30,22 +30,18 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "simpleui",
-
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
-
-    "apps.example"
+    "apps.example",
 ]
 
 MIDDLEWARE = [
-    "utils.middlewares.SplitRequestMiddleware",
-
+    "utils.middlewares.RequestMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -83,6 +79,20 @@ WSGI_APPLICATION = "webserver.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "HOST": "awas.chengdu1.fairy.host",
+        "PORT": 51001,
+        "USER": "root",
+        "PASSWORD": "AtBEzCPspE",
+        "NAME": "webserver",
+
+        "ATOMIC_REQUESTS": True,
+        "AUTOCOMMIT": True,
+    }
+}
 
 
 # Password validation
@@ -133,7 +143,9 @@ LOGGING = {
     },
     "loggers": {
         "django": {
-            "handlers": ["journal", ],
+            "handlers": [
+                "journal",
+            ],
             "level": "INFO",
             "propagate": True,
         },
@@ -147,7 +159,6 @@ REST_FRAMEWORK = {
     # "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     # "DEFAULT_PAGINATION_CLASS": "utils.pagination.StandardResultsSetPagination",
     # "PAGE_SIZE": 3,
-    # "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     # "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 

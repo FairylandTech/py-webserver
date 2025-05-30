@@ -6,11 +6,3 @@
 @organization: https://github.com/FairylandFuture
 @datetime: 2024-05-09 16:15:43 UTC+08:00
 """
-
-from fairylandfuture.toolkit.journal import Journal
-
-journal = Journal(filename="fairylandfuture", debug=True, console=True)
-
-__all__ = [
-    "journal",
-]

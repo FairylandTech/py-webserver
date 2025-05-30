@@ -45,6 +45,9 @@ dependencies = [
     "pypinyin", # Chinese Pinyin handles
     "elasticsearch[async]", # Elasticsearch /async
     "opensearch-py", # OpenSearch
+    "pydantic", # Data validation and settings management
+    "ua-parser",
+    "user-agents",
     # Django and related packages
     "django",
     "djangorestframework",
@@ -56,6 +59,7 @@ dependencies = [
     "django-tenants",
     "django-extensions",
     "django-celery-results",
+    "pyjwt",
     # API documentation
     "drf-yasg",
     "drf-spectacular",

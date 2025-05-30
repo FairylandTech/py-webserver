@@ -1,0 +1,10 @@
+@host=localhost
+@url=/api/example
+
+### Example Test Request
+GET http://{{host}}:8000/{{url}}/v1/example/test
+Accept: application/json
+
+
+
+

@@ -17,7 +17,7 @@ from array import array
 class StringValidatorToolkit:
 
     @classmethod
-    def valid_parentheses(cls, _string: str, /) -> bool:
+    def vaildate_parentheses(cls, _string: str, /) -> bool:
         """
         Validate parentheses.
 
@@ -39,7 +39,7 @@ class StringValidatorToolkit:
         return not stack
 
     @classmethod
-    def valid_json(cls, _string: str, /) -> bool:
+    def vaildate_json(cls, _string: str, /) -> bool:
         """
         Validate JSON.
 
@@ -57,7 +57,7 @@ class StringValidatorToolkit:
             raise err
 
     @classmethod
-    def vaild_url(cls, _string: str, /) -> bool:
+    def vaildate_url(cls, _string: str, /) -> bool:
         """
         Validate URL.
 
@@ -80,7 +80,7 @@ class StringValidatorToolkit:
         return re.match(url_regex, _string) is not None
 
     @classmethod
-    def valid_email(cls, _string: str, /) -> bool:
+    def vaildate_email(cls, _string: str, /) -> bool:
         """
         Validate email.
 
@@ -92,3 +92,17 @@ class StringValidatorToolkit:
         email_regex = re.compile(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
 
         return re.match(email_regex, _string) is not None
+
+    @classmethod
+    def vaildate_phone_number(cls, phone: str) -> bool:
+        """
+        Validate phone number.
+
+        :param phone: Phone number to validate
+        :type phone: str
+        :return: True if the phone number is valid, False otherwise
+        :rtype: bool
+        """
+        phone_regex = re.compile(r"^1[3-9]\d{9}$")
+
+        return re.match(phone_regex, phone) is not None

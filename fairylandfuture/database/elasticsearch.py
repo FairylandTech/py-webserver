@@ -14,7 +14,6 @@ from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import NotFoundError
 from elasticsearch.helpers import bulk
 
-from fairylandfuture import journal
 from fairylandfuture.exceptions.elasticsearch import ElasticSearchExecutionException
 from fairylandfuture.exceptions.messages.elasticsearch import ElasticSearchExceptMessage
 from fairylandfuture.structures.builder.elasticsearch import ElasticsearchBulkParamFrozenStructure
@@ -105,8 +104,7 @@ class ElasticSearchOperator:
 
             return result if len(result) > 1 else result[0]
         except NotFoundError as err:
-            journal.warning("Error getting indices for alias {}: {}", name, err)
-            return tuple()
+            raise RuntimeWarning from err
 
     def search(self, index: str, body: Dict[str, Any]):
         if not self.client.indices.exists(index=index):
