@@ -30,3 +30,22 @@ class RBACGroupModel(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        seif.name = self.name.strip()
+        self.description = self.description.strip()
+
+        super().save(
+            *args,
+            force_insert=force_insert,
+            force_update=force_update,
+            using=using,
+            update_fields=update_fields,
+        )

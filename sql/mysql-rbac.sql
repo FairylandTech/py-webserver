@@ -6,6 +6,9 @@
  * @datetime: 2025-05-29 10:59:54 UTC+08:00
  *****************************************************/
 
+
+create database if not exists webserver default charset utf8mb4;
+
 -- 用户组
 create table if not exists webserver.app_rbac_group (
 	id int auto_increment primary key,

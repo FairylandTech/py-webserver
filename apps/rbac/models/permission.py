@@ -52,9 +52,16 @@ class PermissionModel(models.Model):
         if not self.code.isidentifier():
             raise ValidationError({"code": "权限代码必须是有效的标识符，且只能包含字母、数字和下划线"})
 
-    def save(self, *args, **kwargs):
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
         self.code = self.code.strip().lower()
         self.name = self.name.strip()
         self.path = self.path.rstrip("/") + ("/" if self.path != "/" else "")  # 去掉末尾的 '/'
 
-        super().save(*args, **kwargs)
+        super().save(*args, force_insert=force_insert, force_update=force_update, using=using, update_fields=update_fields)
